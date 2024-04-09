@@ -1,4 +1,4 @@
 cd ..
-call activate replace_with_env_name
+call activate gregg-circ-homer-models
 jupyter lab
 cmd /k

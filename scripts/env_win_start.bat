@@ -1,3 +1,3 @@
-call conda activate replace_with_env_name
+call conda activate gregg-circ-homer-models
 call conda info --envs
 cmd /k
