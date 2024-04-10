@@ -7,4 +7,7 @@ dependencies:
   - jupytext
   - pip
   - python=3.8
+  - numpy
+  - matplotlib
+  - scipy
 prefix: C:\Users\Gregg\anaconda3\envs\gregg-circ-homer-models
