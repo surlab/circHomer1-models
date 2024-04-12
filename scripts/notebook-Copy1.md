@@ -47,7 +47,6 @@ from src import helper_functions as hf
 #imports
 import pandas as pd
 import os
-import seaborn as sns
 
 #import xarray as xr
 #import numpy as np
@@ -55,6 +54,7 @@ import seaborn as sns
 #from matplotlib import pyplot as plt
 #from PIL import Image #this needs to be after matplotlib??
 #from scipy.stats import stats   
+import os
 #import cProfile
 #cProfile.run('out = comp.function(inputs)') #replace "function" and "inputs" to profile the function you want to optimize
 
@@ -68,43 +68,35 @@ if in_colab:
     
 test_path = os.path.join('demo_data', 'test.txt')
 print(test_path)
-cwd = os.getcwd()
-repo_path = os.path.split(cwd)[0]
-
+print(os.getcwd())
 print(os.path.exists(test_path))
 
 ```
 ```python
 #define paths Test that your data exists here
-data_path = os.path.join(repo_path, 'demo_data', '3D Spine volume (um3).csv')
-print(os.path.exists(data_path))
+data_path = "/Users/Gregg/code/gregg-circ-homer-models/scripts/demo_data/ASC26_cell_3_soma.mat"
+print(os.path.exists(soma_path))
 ```
 
 
 ```python colab={"base_uri": "https://localhost:8080/"} id="b3586a50" outputId="56f159c6-3dbc-4b37-d217-083fb5d2e792"
 #data inputs
+
 ```
+
+
 ```python id="82a5927b"
 #data manipulation
 ```
+
 ```python
 #Save data
 ```
 
 ```python
 #Load data to make plots
-spine_volume_df = pd.read_csv(data_path) 
 ```
-
-```python
-#make plots
-
-spine_volume_df.head(5)
-
-
-
-```
-
 ```python
 
 ```
+

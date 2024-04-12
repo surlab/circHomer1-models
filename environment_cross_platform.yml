@@ -5,9 +5,11 @@ dependencies:
   - jupyter
   - jupyterlab
   - jupytext
+  - matplotlib
+  - numpy
   - pip
   - python=3.8
-  - numpy
-  - matplotlib
   - scipy
+  - pandas
+  - seaborn
 prefix: C:\Users\Gregg\anaconda3\envs\gregg-circ-homer-models
