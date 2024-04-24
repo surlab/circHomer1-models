@@ -1,0 +1,7 @@
+#!/bin/bash
+#set -euo pipefail
+echo pwd
+#echo conda env create -f environment_cross_platform.yml
+#echo conda activate gregg-circ-homer-models
+#echo conda info --envs
+#echo pip install -e .

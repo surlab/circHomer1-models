@@ -48,11 +48,12 @@ from src import helper_functions as hf
 import pandas as pd
 import os
 import seaborn as sns
+import matplotlib.pyplot as plt
+import matplotlib.figure
 
 #import xarray as xr
 #import numpy as np
 #import ipdb
-#from matplotlib import pyplot as plt
 #from PIL import Image #this needs to be after matplotlib??
 #from scipy.stats import stats   
 #import cProfile
@@ -80,7 +81,6 @@ data_path = os.path.join(repo_path, 'demo_data', '3D Spine volume (um3).csv')
 print(os.path.exists(data_path))
 ```
 
-
 ```python colab={"base_uri": "https://localhost:8080/"} id="b3586a50" outputId="56f159c6-3dbc-4b37-d217-083fb5d2e792"
 #data inputs
 ```
@@ -92,16 +92,71 @@ print(os.path.exists(data_path))
 ```
 
 ```python
-#Load data to make plots
-spine_volume_df = pd.read_csv(data_path) 
+#Functions (to be pulled into different files later)
+
+def restructure_df(df_in, x_label) -> pd.DataFrame:
+    df_list = []
+    for column in df_in.columns:
+        for measure in df_in[column]:
+            #if column == '0d sh-scramble':
+            #    adjusted_volume = volume/4/1.7/2.5
+            #else:
+            #adjusted_volume = measure/(3.5**3)#/4/1.7
+            row_dict = {
+                'source_experiment': column,
+                x_label: measure
+            }
+            df_list.append(row_dict)
+
+    resturctured_df = pd.DataFrame(df_list)
+    return resturctured_df
+
+
+
 ```
 
 ```python
-#make plots
+def main(data_path, prefix, x_label, scale_factor=1 ) -> tuple([matplotlib.figure.Figure, plt.Axes]):  
+    #typehints from here https://stackoverflow.com/questions/43890844/pythonic-type-hints-with-pandas
+    
+    #Load data to make plots
+    input_df = pd.read_csv(data_path) 
+    
+    #restructure df for plotting
+    spine_measure_df = restructure_df(input_df, x_label)
 
-spine_volume_df.head(5)
+    print(spine_measure_df.head(5))
+    #rescale to account for expansion
+    spine_measure_df[x_label] = spine_measure_df[x_label]/scale_factor
 
+    #make plots
+    fig, ax = plt.subplots()
+    ax = sns.histplot(data=spine_measure_df, x=x_label, kde=True, log_scale=True, hue="source_experiment", element="step",
+        stat="percent", common_norm=False,)
 
+    #save plots
+    save_path = os.path.join(repo_path, 'demo_data', f'{prefix}_histograms.png')
+    fig.savefig(save_path, bbox_inches='tight')
+    return (fig, ax)
+```
+
+```python
+data_path = os.path.join(repo_path, 'demo_data', '3D Spine volume (um3).csv')
+print(os.path.exists(data_path))
+main(data_path, 'volume', 'spine_volume_um3', scale_factor=3.5**3)
+```
+
+```python
+
+```
+
+```python
+data_path = os.path.join(repo_path, 'demo_data', '1D Spine diameter (um).csv')
+print(os.path.exists(data_path))
+main(data_path, 'diameter', 'spine_diameter_um', scale_factor=3.5)
+```
+
+```python
 
 ```
 
