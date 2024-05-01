@@ -29,7 +29,7 @@ print(in_colab)
 #installs (for colab only, run this once)
 if in_colab:
     # ! git clone https://github.com/GreggHeller1/gregg-circ-homer-models.git
-# + id="5e9731ca"
+# + id="5e9731ca" editable=true slideshow={"slide_type": ""}
 #local imports
 #cwd if in colab for imports to work
 if in_colab:
@@ -57,7 +57,7 @@ import matplotlib.figure
 
 
 
-# + colab={"base_uri": "https://localhost:8080/"} id="a06b6e4a" outputId="989c69e2-c8c4-43e0-9ba6-7a36f66be4c3"
+# + colab={"base_uri": "https://localhost:8080/"} id="a06b6e4a" outputId="989c69e2-c8c4-43e0-9ba6-7a36f66be4c3" editable=true slideshow={"slide_type": ""}
 #cwd if in colab for file loading to work
 if in_colab:
     # %cd /content/gregg-circ-homer-models/scripts
@@ -81,29 +81,6 @@ print(os.path.exists(data_path))
 #data manipulation
 # +
 #Save data
-
-# +
-#Functions (to be pulled into different files later)
-
-def restructure_df(df_in, x_label) -> pd.DataFrame:
-    df_list = []
-    for column in df_in.columns:
-        for measure in df_in[column]:
-            #if column == '0d sh-scramble':
-            #    adjusted_volume = volume/4/1.7/2.5
-            #else:
-            #adjusted_volume = measure/(3.5**3)#/4/1.7
-            row_dict = {
-                'source_experiment': column,
-                x_label: measure
-            }
-            df_list.append(row_dict)
-
-    resturctured_df = pd.DataFrame(df_list)
-    return resturctured_df
-
-
-
 # -
 
 def main(data_path, prefix, x_label, scale_factor=1 ) -> tuple([matplotlib.figure.Figure, plt.Axes]):  
@@ -129,6 +106,30 @@ def main(data_path, prefix, x_label, scale_factor=1 ) -> tuple([matplotlib.figur
     fig.savefig(save_path, bbox_inches='tight')
     return (fig, ax)
 
+
+# + editable=true slideshow={"slide_type": ""}
+#Functions (to be pulled into different files later)
+
+def restructure_df(df_in, x_label) -> pd.DataFrame:
+    df_list = []
+    for column in df_in.columns:
+        for measure in df_in[column]:
+            #if column == '0d sh-scramble':
+            #    adjusted_volume = volume/4/1.7/2.5
+            #else:
+            #adjusted_volume = measure/(3.5**3)#/4/1.7
+            row_dict = {
+                'source_experiment': column,
+                x_label: measure
+            }
+            df_list.append(row_dict)
+
+    resturctured_df = pd.DataFrame(df_list)
+    return resturctured_df
+
+
+
+# -
 
 data_path = os.path.join(repo_path, 'demo_data', '3D Spine volume (um3).csv')
 print(os.path.exists(data_path))
