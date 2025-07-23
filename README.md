@@ -1,4 +1,4 @@
-# gregg-circ-homer-models
+# circHomer1-models
 Description of repository here
 ## Installation instructions
 These instructions require:
