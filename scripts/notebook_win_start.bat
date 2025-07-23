@@ -1,5 +1,5 @@
 cd ..
-call conda activate gregg-circ-homer-models
+call conda activate circHomer1-models
 call conda info --envs
 jupyter lab
 cmd /k
