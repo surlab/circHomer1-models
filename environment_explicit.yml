@@ -1,4 +1,4 @@
-name: gregg-circ-homer-models
+name: circHomer1-models
 channels:
   - defaults
 dependencies:
