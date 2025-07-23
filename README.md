@@ -1,52 +1,39 @@
 # circHomer1-models
-Description of repository here
+Code used in supplementary figure 4 for modeling circHomer1 dynamics. 
+
 ## Installation instructions
-These instructions require:
-1. a recent Python distribution, preferably anaconda 
-1. an installation of git. 
-1. (@devs don't forget to indicate if visual studio or other software is required)
-1. The correct environment yamls. Please check the two environment files before trusting them - The dev should do make sure these work before deployment but may have gotten lazy. Packages only available through pip are not automatically included in the environment_cross_platform.yml. If there are dependancies under pip in the environment_explicit.yml file, consider copying them to the environment_cross_platform.yml or be prepared to pip install them yourself.
+1.	These instructions require:
+2.	a recent Python distribution, preferably anaconda 
+3.	an installation of git. 
+4.	The correct environment yamls. 
 #### For a windows machine:
 1. Open a command prompt and run the following commands
 ```bash
 cd ..\documents\code #or similar as relevant for your machine
-git clone git@github.com:surlab/gregg-circ-homer-models.git
+git clone git@github.com:surlab/circHomer1-models.git
 ```
 2. Double click the file "user_install_win.bat" to run it. This should set up the conda environment and all dependencies. 
-#### OR For a windows or non -indows machine
-Open a teriman and run the following commands
+#### OR For a windows or non windows machine
+Open a terminal and run the following commands
 ```bash
 cd ..\documents\code #or similar as relevant for your machine
-git clone git@github.com:surlab/gregg-circ-homer-models.git
-cd gregg-circ-homer-models
+git clone git@github.com:surlab/circHomer1-models.git
+cd circHomer1-models
 conda env create -f environment_cross_platform.yml
-Conda activate gregg-circ-homer-models
+Conda activate circHomer1-models
 call pip install -e .
 ```
-The installation should now be complete and the gregg-circ-homer-models conda environment should still be activated. 
+The installation should now be complete and the circHomer1-models conda environment should still be activated. 
 ## Usage instructions
 1. make a copy of default_config.py and name it config.py.
 1. change the path in config.py to a data directory containing the appropriate input files defined below
 #### For a windows machine:
 Double click the file "main.bat" to run it. 
-#### OR For a windows or non -indows machine
+#### OR for a windows or non windows machine
 Open a terminal and run the following commands
 ```bash
-cd path/to/gregg-circ-homer-models
-conda activate gregg-circ-homer-models
+cd path/to/circHomer1-models
+conda activate circHomer1-models
 python scripts/main.py
 ```
-### Input Files:
-The code expects to find a directory or tree of nested directories where some the following files in each directory:
-1. input file 1 description
-1. input file 2 description
-### Output Files:
-Running the code sucessfully produces the following files
-1. input file 1 description
-1. input file 2 description
-# Quality Control (QC)
-It is important that you QC the results of this code and do not trust it blindly. Here is my process for QC.
-1. Some of the output files should be images. look through them for the following htings:
-# Credit
-This code was created for the surlab at MIT by _________. 
-The template for this repository was created by Gregg Heller.  
+This code was created for the surlab at MIT by Gregg Heller.  
