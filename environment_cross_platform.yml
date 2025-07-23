@@ -1,4 +1,4 @@
-name: gregg-circ-homer-models
+name: circhomer1-models
 channels:
   - defaults
 dependencies:
@@ -12,4 +12,4 @@ dependencies:
   - scipy
   - pandas
   - seaborn
-prefix: C:\Users\Gregg\anaconda3\envs\gregg-circ-homer-models
+prefix: C:\Users\Gregg\anaconda3\envs\circhomer1-models
